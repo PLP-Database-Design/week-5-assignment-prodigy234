@@ -26,14 +26,16 @@ This demonstrates the cconnection of MySQL database and Node.js to create a simp
    const app = express()
 
    
+
    // Question 1 goes here
    app.get('/data', (req,res) => {
         // Retrieve data from database
-        db.query('SELECT * FROM patients', (err, results) => {
-            if (err){
+        const getPatients = 'SELECT first_name, last_name, date_of_birth FROM patients'
+        db.query(getPatients, (err, results) => {
+            if (err) {
                 console.error(err);
                 (err);
-                res.statusMessage(500).send('Error retrieving data');
+                res.statusMessage(500).send('Failed to get patients');
             } else {
                 // Display the records to the browser
                 res.render('data', {results: results});
@@ -45,7 +47,8 @@ This demonstrates the cconnection of MySQL database and Node.js to create a simp
    // Question 2 goes here
    app.get('/data', (req,res) => {
         // Retrieve data from database
-        db.query('SELECT * FROM providers', (err, results) => {
+        const getProviders = 'SELECT first_name, last_name, provider_specialty FROM providers'
+        db.query(getProviders, (err, results) => {
             if (err){
                 console.error(err);
                 (err);
@@ -61,11 +64,12 @@ This demonstrates the cconnection of MySQL database and Node.js to create a simp
    // Question 3 goes here
    app.get('/data', (req,res) => {
         // Retrieve data from database
-        db.query('SELECT first_name FROM patients', (err, results) => {
-            if (err){
+        const getPatients = 'SELECT first_name FROM patients'
+        db.query(getPatients, (err, results) => {
+            if (err) {
                 console.error(err);
                 (err);
-                res.statusMessage(500).send('Error retrieving data');
+                res.statusMessage(500).send('Failed to get patients');
             } else {
                 // Display the records to the browser
                 res.render('data', {results: results});
@@ -77,7 +81,8 @@ This demonstrates the cconnection of MySQL database and Node.js to create a simp
    // Question 4 goes here
    app.get('/data', (req,res) => {
         // Retrieve data from database
-        db.query('SELECT provider_specialty FROM providers', (err, results) => {
+        const getProviders = 'SELECT first_name, provider_specialty FROM providers'
+        db.query(getProviders, (err, results) => {
             if (err){
                 console.error(err);
                 (err);

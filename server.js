@@ -37,11 +37,12 @@ db.connect((err) => {
     // Data is the name of the file inside views folder
     app.get('/data', (req,res) => {
         // Retrieve data from database
-        db.query('SELECT * FROM providers', (err, results) => {
-            if (err){
+        const getPatients = 'SELECT first_name, last_name, date_of_birth FROM patients'
+        db.query(getPatients, (err, results) => {
+            if (err) {
                 console.error(err);
                 (err);
-                res.statusMessage(500).send('Error retrieving data');
+                res.statusMessage(500).send('Failed to get patients');
             } else {
                 // Display the records to the browser
                 res.render('data', {results: results});
