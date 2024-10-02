@@ -37,7 +37,7 @@ db.connect((err) => {
     // Data is the name of the file inside views folder
     app.get('/data', (req,res) => {
         // Retrieve data from database
-        db.query('SELECT * FROM patients', (err, results) => {
+        db.query('SELECT * FROM providers', (err, results) => {
             if (err){
                 console.error(err);
                 (err);
@@ -49,6 +49,8 @@ db.connect((err) => {
         });
     });
 
+
+
     app.listen(process.env.PORT, () => {
         console.log(`Server listening on port ${process.env.PORT}`);
 
@@ -59,3 +61,5 @@ db.connect((err) => {
         })
     });
 }); 
+
+
